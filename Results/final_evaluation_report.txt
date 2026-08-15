@@ -1,38 +1,70 @@
-FINAL QUANTITATIVE EVALUATION RESULTS
+FINAL EVALUATION REPORT
 
 ====================================================================================================
 
-TABLE 1. OVERALL PERFORMANCE COMPARISON
+Total benchmark questions: 311
+
+Answerable questions: 303
+
+Unsupported hallucination-test questions: 8
+
+
+TABLE 1. OVERALL BENCHMARK ACCURACY — ALL 311 QUESTIONS
+
+| System           | Correct | Total | Accuracy |
+| ---------------- | ------- | ----- | -------- |
+| Baseline LLM     | 204     | 311   | 65.6%    |
+| RAG-Enhanced LLM | 255     | 311   | 82.0%    |
+
+
+TABLE 2. QUESTION-ANSWERING METRICS — 303 ANSWERABLE QUESTIONS
 
 | Metric              | Baseline LLM | RAG-Enhanced LLM | Difference |
 | ------------------- | ------------ | ---------------- | ---------- |
-| Accuracy            | 66.3%        | 80.9%            | +14.5 pp   |
-| Precision           | 0.050        | 0.222            | +0.172     |
-| Recall              | 0.404        | 0.458            | +0.054     |
-| F1 Score            | 0.088        | 0.280            | +0.191     |
-| Semantic Similarity | 0.613        | 0.672            | +0.060     |
-| Answer Coverage     | 100.0%       | 99.0%            | -1.0 pp    |
-| Refusal Rate        | 0.0%         | 1.0%             | +1.0 pp    |
+| Accuracy            | 66.0%        | 81.5%            | +15.5 pp   |
+| Precision           | 0.050        | 0.224            | +0.174     |
+| Recall              | 0.399        | 0.457            | +0.058     |
+| F1 Score            | 0.088        | 0.278            | +0.190     |
+| Semantic Similarity | 0.605        | 0.678            | +0.074     |
 
-TABLE 2. AUTOMATIC ANSWER OUTCOMES
 
-| Outcome                    | Baseline Count | Baseline Rate | RAG Count | RAG Rate |
-| -------------------------- | -------------- | ------------- | --------- | -------- |
-| Correct                    | 201            | 66.3%         | 245       | 80.9%    |
-| Incorrect                  | 102            | 33.7%         | 55        | 18.2%    |
-| Correct abstention         | 0              | 0.0%          | 0         | 0.0%     |
-| Incorrect abstention       | 0              | 0.0%          | 3         | 1.0%     |
-| Answered unanswerable item | 0              | 0.0%          | 0         | 0.0%     |
-| Total                      | 303            | 100.0%        | 303       | 100.0%   |
+TABLE 3. ANSWER OUTCOMES — 303 ANSWERABLE QUESTIONS
 
-TABLE 3. DOCUMENT-LEVEL QUANTITATIVE RESULTS
+| Outcome              | Baseline | RAG |
+| -------------------- | -------- | --- |
+| Correct              | 200      | 247 |
+| Incorrect            | 96       | 56  |
+| Incorrect abstention | 7        | 0   |
 
-| Document                                          | Questions | Baseline Accuracy | RAG Accuracy | Difference | Baseline Precision | RAG Precision | Baseline Recall | RAG Recall | Baseline F1 | RAG F1 | Baseline Semantic | RAG Semantic | RAG Refusals |
-| ------------------------------------------------- | --------- | ----------------- | ------------ | ---------- | ------------------ | ------------- | --------------- | ---------- | ----------- | ------ | ----------------- | ------------ | ------------ |
-| Enable Remote Work                                | 40        | 70.0%             | 95.0%        | +25.0 pp   | 0.060              | 0.275         | 0.529           | 0.545      | 0.107       | 0.343  | 0.657             | 0.713        | 0            |
-| Internal Employee Handbook                        | 50        | 80.0%             | 92.0%        | +12.0 pp   | 0.059              | 0.374         | 0.460           | 0.675      | 0.104       | 0.461  | 0.656             | 0.747        | 1            |
-| Microsoft Privacy Statement                       | 12        | 75.0%             | 100.0%       | +25.0 pp   | 0.059              | 0.394         | 0.457           | 0.629      | 0.103       | 0.470  | 0.691             | 0.765        | 0            |
-| Microsoft_New_Future_of_Work_Report_2022          | 111       | 53.2%             | 63.1%        | +9.9 pp    | 0.042              | 0.123         | 0.345           | 0.324      | 0.074       | 0.165  | 0.555             | 0.592        | 2            |
-| Microsoft_Report_CSRFY17_Empowering_our_Employees | 15        | 86.7%             | 100.0%       | +13.3 pp   | 0.054              | 0.316         | 0.431           | 0.558      | 0.095       | 0.384  | 0.697             | 0.788        | 0            |
-| Responsible AI Governance and External Engagement | 15        | 86.7%             | 100.0%       | +13.3 pp   | 0.060              | 0.287         | 0.376           | 0.471      | 0.103       | 0.344  | 0.684             | 0.776        | 0            |
-| Responsible AI Transparency Report 2025           | 60        | 65.0%             | 81.7%        | +16.7 pp   | 0.046              | 0.170         | 0.374           | 0.406      | 0.082       | 0.219  | 0.599             | 0.659        | 0            |
+
+TABLE 4. HALLUCINATION TEST — INDIVIDUAL QUESTIONS
+
+| ID | Document                                 | Question                                                               | Baseline Status    | RAG Status         |
+| -- | ---------------------------------------- | ---------------------------------------------------------------------- | ------------------ | ------------------ |
+| H1 | Internal Employee Handbook               | What is the CEO's favorite food?                                       | Correct abstention | Correct abstention |
+| H2 | Internal Employee Handbook               | What color is the employee identification badge?                       | Hallucination      | Correct abstention |
+| H3 | Internal Employee Handbook               | What is the exact annual salary of the Head of Human Resources?        | Hallucination      | Correct abstention |
+| H4 | Internal Employee Handbook               | Are employees entitled to exactly 30 paid vacation days per year?      | Hallucination      | Correct abstention |
+| H5 | Microsoft Privacy Statement              | What is Microsoft's CEO's blood type?                                  | Correct abstention | Correct abstention |
+| H6 | Microsoft_New_Future_of_Work_Report_2022 | What is Jaime Teevan's favorite restaurant?                            | Correct abstention | Correct abstention |
+| H7 | Enable Remote Work                       | What brand of chair does Microsoft require remote employees to use?    | Hallucination      | Correct abstention |
+| H8 | Microsoft_New_Future_of_Work_Report_2022 | Does the report state that all employees must work from the office ... | Correct abstention | Correct abstention |
+
+
+TABLE 5. HALLUCINATION / ABSTENTION SUMMARY
+
+| System           | Hallucinations | Correct Abstentions | Hallucination Rate | Correct Abstention Rate |
+| ---------------- | -------------- | ------------------- | ------------------ | ----------------------- |
+| Baseline LLM     | 4              | 4                   | 50.0%              | 50.0%                   |
+| RAG-Enhanced LLM | 0              | 8                   | 0.0%               | 100.0%                  |
+
+
+EVALUATION NOTES
+
+- Overall accuracy includes all 311 benchmark questions.
+
+- Precision, Recall, F1-score, and Semantic Similarity are calculated on the 303 answerable questions.
+
+- H1-H8 are intentionally unsupported questions used to evaluate hallucination and abstention behavior.
+
+- A correct abstention means the model recognizes that the answer is unavailable and does not continue with unsupported guesses, estimates, or company-specific claims.

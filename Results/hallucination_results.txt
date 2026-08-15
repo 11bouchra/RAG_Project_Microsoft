@@ -1,7 +1,0 @@
-AUTOMATIC HALLUCINATION PROXY RESULTS
-==========================================================================================
-
-| System           | Questions | Supported | Hallucination proxy | Refusals | Proxy rate |
-| ---------------- | --------: | --------: | ------------------: | -------: | ---------: |
-| Baseline LLM     |       303 |       205 |                  98 |        0 |      32.3% |
-| RAG-Enhanced LLM |       303 |       248 |                  52 |        3 |      17.3% |
